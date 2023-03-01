@@ -8,21 +8,26 @@
     <h1> Datos de la Persona</h1>
     <a th:href="@{/}"> Regresar</a>
     <br/>
+    <br/>
 
     <form th:action="@{/guardar}" method="post" th:object="${persona}">
         <input type="hidden" name="idPersona" th:field="*{idPersona}"/>
         <br/>
-        <label id="nombre">Nombre:</label>
+        <label id="Nombre">Nombre:</label>
         <input type="text" name="nombre" th:field="*{nombre}">
+        <span th:if="${#fields.hasErrors('Nombre')}" th:errors="*{Nombre}">Error Nombre</span>
         <br/>
-        <label id="apellido">Apellido:</label>
+        <label id="Apellido">Apellido:</label>
         <input type="text" name="apellido" th:field="*{apellido}">
+        <span th:if="${#fields.hasErrors('Apellido')}" th:errors="*{Apellido}">Error Apellido</span>
         <br/>
-        <label id="email">Email:</label>
+        <label id="Email">Email:</label>
         <input type="email" name="email" th:field="*{email}">
+        <span th:if="${#fields.hasErrors('Email')}" th:errors="*{Email}">Error Email</span>
         <br/>
-        <label id="telefono">Telefono:</label>
+        <label id="Telefono">Telefono:</label>
         <input type="tel" name="telefono" th:field="*{telefono}">
+        <span th:if="${#fields.hasErrors('Telefono')}" th:errors="*{Telefono}">Error Telefono</span>
         <br/>
         <input type="submit" name="guardar" value="Guardar">
     </form>

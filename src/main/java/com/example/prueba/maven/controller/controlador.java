@@ -4,11 +4,16 @@ package com.example.prueba.maven.controller;
 import com.example.prueba.maven.Dao.iPersonaDao;
 import com.example.prueba.maven.Servicio.PersonaService;
 import com.example.prueba.maven.domain.Persona;
+
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,8 +48,12 @@ public class controlador {
     }
 
     @PostMapping("/guardar")
-    public String Guardar(Persona persona){
+    public String Guardar(@Valid Persona persona, BindingResult errores, Model model){
+        if(errores.hasErrors()){
+            return "modificar";
+        }
         PersonaService.Guardar(persona);
+        model.addAttribute("persona",persona);
         return "redirect:/";
     }
 
