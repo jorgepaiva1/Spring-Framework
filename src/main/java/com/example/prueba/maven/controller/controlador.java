@@ -48,12 +48,11 @@ public class controlador {
     }
 
     @PostMapping("/guardar")
-    public String Guardar(@Valid Persona persona, BindingResult errores, Model model){
+    public String Guardar(@Valid Persona persona, Errors errores){
         if(errores.hasErrors()){
             return "modificar";
         }
         PersonaService.Guardar(persona);
-        model.addAttribute("persona",persona);
         return "redirect:/";
     }
 
