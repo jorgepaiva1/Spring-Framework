@@ -5,7 +5,9 @@
     <title>Datos de Persona</title>
 </head>
 <body>
-    <h1> Datos de la Persona</h1>
+    <header th:replace="Plantilla_Layout/Plantilla :: header"></header>
+    <h2> Datos de la Persona</h2>
+    <br/>
     <a th:href="@{/}"> Regresar</a>
     <br/>
     <br/>
@@ -22,7 +24,7 @@
         <span th:if="${#fields.hasErrors('Apellido')}" th:errors="*{Apellido}">Error Apellido</span>
         <br/>
         <label id="Email">Email:</label>
-        <input type="email" name="email" th:field="*{email}">
+        <input type="text" name="email" th:field="*{email}">
         <span th:if="${#fields.hasErrors('Email')}" th:errors="*{Email}">Error Email</span>
         <br/>
         <label id="Telefono">Telefono:</label>
@@ -31,5 +33,8 @@
         <br/>
         <input type="submit" name="guardar" value="Guardar">
     </form>
+
+    <footer th:replace="Plantilla_Layout/Plantilla :: footer"></footer>
+
 </body>
 </html>
