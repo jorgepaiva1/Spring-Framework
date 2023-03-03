@@ -1,6 +1,7 @@
 package com.example.prueba.maven.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 import java.io.Serializable;
 
@@ -13,8 +14,11 @@ public class Persona implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPersona;
+    @NotEmpty(message = "El nombre no puede estar Vacio")
     private String Nombre;
+    @NotEmpty(message = "El Apellido no puede estar Vacio")
     private String Apellido;
+    @NotEmpty(message = "El Email no puede estar Vacio")
     private String Email;
     private String Telefono;
 }
